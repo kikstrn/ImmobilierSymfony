@@ -1,0 +1,57 @@
+.menu{
+    font-size: 20px;
+}
+
+.menu:hover{
+    background-color:darkgrey;
+}
+
+#Titre{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#new_user{
+    cursor: pointer;
+}
+
+.mouse{
+    cursor: pointer;
+}
+
+.infos{
+    text-decoration: underline;
+}
+
+#modal-content {
+    height:58vh;
+    overflow-y:auto ;
+}
+.login{
+    margin-bottom: 271px;
+}
+
+.aPropos{
+    margin-bottom: 55px;
+}
+
+.numero1{
+    font-weight: bold;
+    font-size: 4em;
+    margin-top: 144px;
+}
+
+#maps{
+    height: 193px;
+    margin-top: 23px;
+}
+
+.map{
+    padding-top: 68px;
+    font-size: 2em;
+}
+
+.returnBien{
+    margin-bottom: 124px;
+    margin-top: 10px;
+}

@@ -1,0 +1,9 @@
+{{ form_start(form) }}
+{#{{ form_start(formMedia) }}#}
+    {{ form_widget(form) }}
+{#    {{ form_row(formMedia.nomMedia) }}#}
+{#    {{ form_row(formMedia.imageFile) }}#}
+    <button type="submit" class="btn btn-warning">{{ button_label|default('Sauvegarder') }}</button>
+{#{{ form_end(formMedia) }}#}
+{{ form_end(form) }}
+

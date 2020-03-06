@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout médias{% endblock %}
+
+{% block body %}
+    <h1>Ajout des médias</h1>
+
+    {{ include('media/_form.html.twig') }}
+
+    <a href="{{ path('logement_new') }}"><button type="button" class="btn btn-primary returnBien">Retourner à l'ajout d'un bien</button></a>
+{% endblock %}

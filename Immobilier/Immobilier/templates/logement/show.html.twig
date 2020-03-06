@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Logement{% endblock %}
+
+{% block body %}
+    <h1>Logement</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Type</th>
+            <td>{{ logement.TypeLogement.nomTypeLogement }}</td>
+        </tr>
+        <tr>
+            <th>Bien</th>
+            <td>{{ logement.vente.vente }}</td>
+        </tr>
+        <tr>
+            <th>Localisation</th>
+            <td>{{ logement.localisation.nomLocalisation }}</td>
+        </tr>
+            <tr>
+                <th>Nombre de Pieces</th>
+                <td>{{ logement.nombrePiece }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ logement.prix }} €</td>
+            </tr>
+            <tr>
+                <th>Surface Totale</th>
+                <td>{{ logement.surfaceTotale }} m²</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ logement.description }}</td>
+            </tr>
+            <tr>
+                <th>Depôt</th>
+                <td>{{ logement.depot }} €</td>
+            </tr>
+            <tr>
+                <th>Proximité</th>
+                <td>{{ logement.proximite }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('logement_index') }}"><button type="button" class="btn btn-primary">Retour</button></a>
+
+    <a href="{{ path('logement_edit', {'id': logement.id}) }}"><button type="button" class="btn btn-warning">Modifier</button></a>
+
+    {{ include('logement/_delete_form.html.twig') }}
+{% endblock %}

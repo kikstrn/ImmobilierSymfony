@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New EauChaude{% endblock %}
+
+{% block body %}
+    <h1>Create new EauChaude</h1>
+
+    {{ include('eau_chaude/_form.html.twig') }}
+
+    <a href="{{ path('eau_chaude_index') }}">back to list</a>
+{% endblock %}
