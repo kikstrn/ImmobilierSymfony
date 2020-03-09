@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit EauChaude{% endblock %}
+
+{% block body %}
+    <h1>Edit EauChaude</h1>
+
+    {{ include('eau_chaude/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('eau_chaude_index') }}">back to list</a>
+
+    {{ include('eau_chaude/_delete_form.html.twig') }}
+{% endblock %}

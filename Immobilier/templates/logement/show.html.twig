@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Logement{% endblock %}
+
+{% block body %}
+    <h1>Logement</h1>
+<div class="row">
+
+    <div class="col-lg-6">
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Type</th>
+            <td>{{ logement.TypeLogement.nomTypeLogement }}</td>
+        </tr>
+        <tr>
+            <th>Bien</th>
+            <td>{{ logement.vente.vente }}</td>
+        </tr>
+        <tr>
+            <th>Localisation</th>
+            <td>{{ logement.localisation.nomLocalisation }}</td>
+        </tr>
+            <tr>
+                <th>Nombre de Pieces</th>
+                <td>{{ logement.nombrePiece }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ logement.prix }} €</td>
+            </tr>
+            <tr>
+                <th>Surface Totale</th>
+                <td>{{ logement.surfaceTotale }} m²</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ logement.description }}</td>
+            </tr>
+            <tr>
+                <th>Depôt</th>
+                <td>{{ logement.depot }} €</td>
+            </tr>
+            <tr>
+                <th>Proximité</th>
+                <td>{{ logement.proximite }}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <div class="col-lg-6">
+
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+
+            <div class="carousel-inner">
+                {%  set show = 0 %}
+                {% for medium in logement.media %}
+                <div class="carousel-item {% if show == 0 %}{% set show = 1 %} active {% endif %}">
+                    <img class="d-block w-100" src="{{ vich_uploader_asset(medium, 'imageFile') }}" alt="First slide">
+                </div>
+                {% endfor %}
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Précedent</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Suivant</span>
+            </a>
+
+        </div>
+
+    </div>
+</div>
+
+
+    <a href="{{ path('logement_index') }}"><button type="button" class="btn btn-primary returnShow">Retour</button></a>
+    {% if is_granted('ROLE_ADMIN') %}
+    <a href="{{ path('logement_edit', {'id': logement.id}) }}"><button type="button" class="btn btn-warning">Modifier</button></a>
+
+    {{ include('logement/_delete_form.html.twig') }}
+    {% endif %}
+{% endblock %}

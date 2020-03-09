@@ -1,0 +1,20 @@
+.formulaire{
+    margin-bottom: 20px;
+}
+
+.menu{
+    font-size: 20px;
+}
+
+.menu:hover{
+    background-color:darkgrey;
+}
+
+#Titre{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#new_user{
+    cursor: pointer;
+}

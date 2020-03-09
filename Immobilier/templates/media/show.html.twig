@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Media{% endblock %}
+
+{% block body %}
+    <h1>Media</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Image</th>
+        <td><img src="{{ vich_uploader_asset(medium,'imageFile') }}" style="width:100%; height: auto" class="card-img-top" alt=""></td>
+        </tr>
+            <tr>
+                <th>NomMedia</th>
+                <td>{{ medium.nomMedia }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ medium.statut ? 'Oui' : 'Non' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('media_index') }}"><button class="btn btn-primary"> Retour</button></a>
+
+    <a href="{{ path('media_edit', {'id': medium.id}) }}"><button class="btn btn-warning"> Modifier</button></a>
+
+    {{ include('media/_delete_form.html.twig') }}
+{% endblock %}

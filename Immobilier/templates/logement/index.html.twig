@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Logement index{% endblock %}
+
+{% block body %}
+
+    <h1 class="text-center">RECHERCHE</h1>
+    {{ form_start(form) }}
+    {{ form_end(form) }}
+
+
+    <h1 class="text-center">LOGEMENTS</h1>
+    {% if is_granted('ROLE_ADMIN') %}
+    <div class="text-center">
+        <a class="text-light text-center" href="{{ path('logement_new') }}"><button type="button" class="btn btn-success">Ajouter</button></a>
+    </div>
+    {% endif %}
+
+    <div class="row mt-5">
+        {%  for log in logement %}
+            <div class="col-lg-12 mb-5">
+                <div class="row">
+{% set ind=0 %}
+                    <div class="col-lg-6">
+{% for media in log.media %}
+    {% if ind<=0 %}
+{% set ind=ind+1 %}
+                       <img src="{{ vich_uploader_asset(media, 'imageFile') }}" style="width:100%; height: auto" class="card-img-top" alt="">
+    {% endif %}
+{% endfor %}
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    {{ log.typeLogement.nomTypeLogement }} de {{ log.surfaceTotale }}m² à {{ log.localisation.nomLocalisation }} au prix de {{ log.prix }} €
+                                </h5>
+                                <hr>
+                                <h6 class="card-text">
+                                    <p>Type : {{ log.typeLogement.nomTypeLogement }}</p>
+                                    <p>Vente : {{ log.vente.vente }}</p>
+                                    <p>Localisation : {{ log.localisation.nomLocalisation }}</p>
+                                    <p>Prix : {{ log.prix }} €</p>
+                                    <p>Nombre de pièces : {{ log.nombrePiece }}</p>
+                                    <p>Surface Totale : {{ log.surfaceTotale }}m²</p>
+                                    <p>Description : {{ log.description }}</p>
+                                    <p>Proximité : {{ log.proximite }}</p>
+                                    <p>Dépôt : {{ log.depot }}</p>
+                                </h6>
+
+                                <a class="text-light" href="{{ path('logement_show', {'id': log.id}) }}"><button type="button" class="btn btn-info">Voir plus</button></a>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                <a class="text-light" href="{{ path('logement_edit', {'id': log.id}) }}"><button type="button" class="btn btn-warning">Modifier</button></a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
